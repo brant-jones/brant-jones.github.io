@@ -1,0 +1,73 @@
+<HTML>
+<HEAD><TITLE>trunc_add_model</TITLE>
+<meta name="description" content="C library for truncated-addition hash algorithms" />
+<link href="style.css" rel="STYLESHEET" />
+</HEAD>
+<BODY>
+
+
+<B>blake_trunc_add_model</B> and <B>skein_trunc_add_model</B> are C programs that replace addition with truncated-carry addition in the Blake and Skein hash algorithms.
+
+<P>
+The library source files are: <BR>
+<UL>
+  <LI><A HREF="blake_trunc_add_model.c">blake_trunc_add_model.c</A>, based on <A HREF="blake256_light.c">blake256_light.c</A> from <A HREF="http://www.131002.net/blake/">http://www.131002.net/blake/</A> 
+  <LI><A HREF="skein_trunc_add_model.c">skein_trunc_add_model.c</A>
+</UL><BR>
+To compile these, we use
+<PRE> gcc -o blake_trunc_add_model -O3 blake_trunc_add_model.c </PRE>
+and
+<PRE> gcc -o skein_trunc_add_model -O3 skein_trunc_add_model.c </PRE>
+respectively.
+
+<P>
+<B>Sample Output</B><BR>
+<P>
+Running without arguments gives help text.  Input is sent to the program using command-line parameters.  Output is formatted in Latex table format. <BR>
+<PRE>
+brant$ ./blake_trunc_add_model
+USAGE: blake &#060;number of carry bits&#062; &#060;number of trial for each report&#062; &#060;number of reports&#062;
+brant$ ./blake_trunc_add_model 10 1000000 10
+original reference test:
+0CE8D4EF4DD7CD8D62DFDED9D4EDB0A774AE6A41929A74DA23109E8F11139C87
+ok
+D419BAD32D504FB7D44D460C42C5593FE544FA4C135DEC31E21BD9ABDCC22D41
+ok
+
+using 10 carry bits
+    count  &        64-bit add    &         blake      &        \\ \hline
+   1000000 &     994709 (99.471%) &       1082 ( 0.108%) \\ \hline
+   2000000 &    1989621 (99.481%) &       2148 ( 0.107%) \\ \hline
+   3000000 &    2984517 (99.484%) &       3143 ( 0.105%) \\ \hline
+   4000000 &    3979482 (99.487%) &       4271 ( 0.107%) \\ \hline
+   5000000 &    4974297 (99.486%) &       5267 ( 0.105%) \\ \hline
+   6000000 &    5969219 (99.487%) &       6327 ( 0.105%) \\ \hline
+   7000000 &    6964211 (99.489%) &       7338 ( 0.105%) \\ \hline
+   8000000 &    7959139 (99.489%) &       8464 ( 0.106%) \\ \hline
+   9000000 &    8954047 (99.489%) &       9510 ( 0.106%) \\ \hline
+  10000000 &    9948942 (99.489%) &      10636 ( 0.106%) \\ \hline
+</PRE>
+
+<P>
+
+<PRE>
+brant$ ./skein_trunc_add_model
+USAGE: skein_trunc_add_model &#060;number of carry bits&#062; &#060;number of trial for each report&#062; &#060;number of reports&#062;
+brant$ ./skein_trunc_add_model 8 10000000 10
+using 8 carry bits
+    count  &        64-bit add    &         skein 256 256      \\ \hline
+  10000000 &    9474076 (94.741%) &         71 ( 0.001%) \\ \hline
+  20000000 &   18946207 (94.731%) &        123 ( 0.001%) \\ \hline
+  30000000 &   28420085 (94.734%) &        190 ( 0.001%) \\ \hline
+  40000000 &   37893434 (94.734%) &        259 ( 0.001%) \\ \hline
+  50000000 &   47366330 (94.733%) &        331 ( 0.001%) \\ \hline
+  60000000 &   56840028 (94.733%) &        391 ( 0.001%) \\ \hline
+  70000000 &   66313227 (94.733%) &        463 ( 0.001%) \\ \hline
+  80000000 &   75786205 (94.733%) &        518 ( 0.001%) \\ \hline
+  90000000 &   85259011 (94.732%) &        568 ( 0.001%) \\ \hline
+ 100000000 &   94732340 (94.732%) &        631 ( 0.001%) \\ \hline
+</PRE>
+
+</BODY>
+</HTML>
+
