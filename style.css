@@ -1,0 +1,17 @@
+
+body { background-color : #FFFFFF; font-family: 'Fira Sans', Trebuchet MS, Helvetica; }
+
+img {
+    max-width: 150%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+a    { text-decoration:none; border-bottom: 1px dotted #000066; }
+a:link { color:#000066; }
+a:visited { color:#000066; }
+a:hover { color:#000066; border-bottom: 1px dotted #0000aa; }
+
+.paper_t {margin-left: 1em;}
+.paper_j {margin-left: 2em; font-size: 88%;}
+
