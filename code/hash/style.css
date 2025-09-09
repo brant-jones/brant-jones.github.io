@@ -1,0 +1,35 @@
+
+/***************************************************************************
+ * 
+ * Defaults
+ *
+ ***************************************************************************/
+body {
+       	//background-color : #CCDDFF;
+       	//background-color : #DDEEFF;
+       	//background-color : #E6F3FF;
+       	background-color : #FFFFFF;
+        //background-image: url('gradient.php.jpeg');
+	font-family: Trebuchet MS, Helvetica;
+     }
+
+
+a    {
+          text-decoration:none;
+	border-bottom: 1px dotted #000066;
+     }
+
+a:link {
+          color:#000066;
+        }
+
+a:visited {
+             color:#000066;
+           }
+
+a:hover {
+           color:#000066;
+           border-bottom: 1px dotted #0000aa;
+         }
+
+
