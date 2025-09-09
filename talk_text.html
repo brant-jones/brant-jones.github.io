@@ -1,0 +1,232 @@
+<HTML>
+<HEAD><TITLE>Brant Jones</TITLE>
+<link href="style.css" rel="STYLESHEET" />
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</HEAD>
+<!BODY bgcolor="#CCDDFF" link="#000066" alink="#999999" vlink="#000066" leftmargin=8 topmargin=8>
+<BODY>
+<!FONT face="Trebuchet MS, Helvetica" color="#000000">
+
+Seeing the (game) trees for the forest:  <P>
+
+1.  A seed:  at the spring 2015 meeting (Roanoke College), Brian Hopkins gave an inspiring talk about fair division "taking turns" that used ideas from algebraic combinatorics.<P>
+
+Main idea of this talk:  game trees can be a source of undergraduate research problems.  This talk is intended to be a recipe to show you how to cook up your own problems. <P>
+
+2.  I am not an expert in game theory!  But I will try to survey a "landscape" and point out some "off ramps" where you can find more information.<P>
+
+At JMU I teach a course for general education students on "strategy" and start the semester by having my students think about what makes a game a game.<P>
+
+Interesting philosophical interface of (precise) mathematics and (imprecise) human experience.<P>
+
+3.  Some key features we might use to distinguish games.  Deterministic means player's moves completely control the state of the game (whereas with dice/cards, there may be other forces).  Partial information means some aspects of the state are hidden from players, but this doesn't need to come from randomness as in rock-paper-scissors.<P>
+
+4.  These are the main features considered in this talk.  (Simultaneous/continuous games are very useful in finance/economics, this is the first "off ramp:" different literature/techniques.)<P>
+
+5.  Finding who wins, and what their strategy is, is called "solving" the game.<P>
+
+6.  Let's consider a simple and specific example.  I give this game to my students and have them play a few games.  They usually _don't_ believe the first moves matter at all (b/c chance?)  They claim that by the time it gets down to about six flags or so, _then_ every move counts.<P>
+
+You can probably see there is no chance/deterministic, and that someone must win.  By induction, that strategy might get more and more complicated, but every move must count.<P>
+
+Let's see.<P>
+
+7.  At the end of the game, outcomes are clear.<P>
+
+8.  We see (by induction) that the outcomes are determined at every stage.  The states that are nonzero mod 4 are winning, while the zero mod 4 states are losing.<P>
+
+9.  Ok, here is another off-ramp to some literature:  <P>
+
+Corners are states that are 1. losing, and 2. sticky, in the sense that once you are in a corner state, the opponent can always put you back into a corner state.  Corners for 21-flags are the zero mod 4 states.<P>
+
+Impartial here means that for any given state, both players have exactly the same set of moves.  (This is true for 21-flags, obviously not true for any game in which players control a set of pieces).<P>
+
+But that's a _very general_ condition for Sprague-Grundy to apply:  it reduces your game to an equivalent nim game, so nim is "universal."<P>
+
+E.g. Some current work of Dana Ernst (active in MAA).  <P>
+
+CGT tries to apply/generalize the ideas of Sprague--Grundy to "real" games like go or chess; only partially successful imho.<P>
+
+10.  Generalizing 21-flags in another direction:  Game trees are universal!  (so much so, that they may seem useless...  but they always apply.)  Very simple idea....  play forward, solve backwards.<P>
+
+Zermelo had the statement that there exists an optimal strategy (e.g. for chess), but the proof was set-theoretic (same Zermelo as ZFC) rather than inductive.  Backwards induction algorithm credited to von Neumann.<P>
+
+11.  The tree does not have to be depicted as a graph.  This graphic encodes the winning strategy for tic-tac-toe using recursion instead (cf. prints of M.C. Escher).<P>
+
+12.  Turns out you can actually apply the game tree idea/algorithm to games people actually play.  Of course, you use a computer, so it becomes more of a (finite) CS problem as opposed to an (infinite) math problem. <P>
+
+(Still:  the finiteness that must be conquered is pretty awe inspiring.)<P>
+
+13.  Let me show another way to use the game tree, to get an abstract result about a game called Hex.  This was invented by John Nash (beautiful mind).  The mechanics are a bit like the (ancient) game go, but played on a hexagonal board.<P>
+
+14.  Notice there can be no ties:  cut all the F hexagons out of the board.  pick up the left/right sides of the board and pull.  There are precisely two cases:  if something stops you from pulling, then S wins; else, F wins.  There is some debate about the validity of this proof:  it relies on every pair of hexagons meeting at codimension-1 boundary (as opposed to the case for square grid where diagonal squares meet at a point).  You can prove it more carefully with induction.<P>
+
+Next:  Claim is that there exists a winning strategy for the first player (but proof is non-constructive, and no one knows how to describe it in general).<P>
+
+15.  There exists a winning strategy for one of the players, from the game tree by backwards induction / von Neumann theorem. <P>
+
+Say we are 1st player, but the second player's optimal strategy is known.  Then, we can set up a board where the moves are off by one, and steal it.  (Not unlike a man-in-the-middle attack in cryptography).<P>
+
+On the secret board, we are guaranteed to get a path across, which when transposed on the real board, will be a path vertically, for the win!<P>
+
+16.  Ok, I'm going to shift to some of my own work with students on game trees.  This is a board for a game commonly marketed as "Mancala" in America.<P>
+
+These are the rules, plus there are some capture rules that we will ignore in this talk.<P>
+
+17.  Here is how the sowing moves work.  Pick up all the seeds and then "sow" them, placing one seed in each subsequent bin until you run out.  This has a passing resemblance to "chip firing" games / abelian sandpile models, but differs b/c you fire different distances depending on how many seeds are in the bin, so less obvious how to encode with adjacency matrices and so on.<P>
+
+Remember, when you land in the store, you go again!<P>
+
+18.  So green goes again, maybe we pick up and wrap around.<P>
+
+19.  Now it is red's turn.  They can go again, etc.<P>
+
+20.  In the 1970's a french mathematician Veronique Gautheron thought about a solitaire version, where you try to "sweep" all the seeds into your store in one move.<P>
+
+We see a few patterns here, e.g. every other move picks up a seed right next to the store; also you seem to play the rightmost possible bin.<P>
+
+21.  You can clear all 10 seeds in one turn!<P>
+
+22.  Although this is pretty artificial as a solitaire game, these moves are an important strategic component in the larger game, and for a variety of mancala variants.<P>
+
+There is a cool book by Russ that describes about 100 variations.<P>
+
+23.  So, we have a "game tree" just like 21 flags.  In fact, it is 1-player, and it is just a linear graph.<P>
+
+We "play" it from the bottom of the table to the top.  But thinking of it as a game tree let's us reverse that as well, so we can define a "reverse move" that let's us go from the top of the table to the bottom.<P>
+
+And we can start to see more patterns:  the bins I have labeled b_i always seem to have at most i different values, there is some periodic behavior where they start to repeat values.<P>
+
+We could generate more data by playing backwards, but it might be nice to be able to _directly_ generate the 100th board without having to go through the first 99.<P>
+
+So we look for patterns.<P>
+
+I was talking to Laura Taalman once about some math problems I was working on and she asked me "so what do you get?" probably expecting me to give some technical results.  Instead I said, "What you get are some really cool slogans!"<P>
+
+So at the risk of sounding like a crackpot:  the slogan we found for the Tchoukaillon vectors is:  they are the derivative of (n mod x).  (x being the variable, obviously.)<P>
+
+24.  Ok, what does that mean??<P>
+
+Well, if you wanted to measure changes in (n mod x), for fixed n, you realize it's pretty inconsistent b/c you're really comparing apples and oranges:  or clocks with all different numbers of hours.<P>
+
+So instead we standardize by choosing residue classes that are _increasing_.  See example:  These sequences eventually stabilize.<P>
+
+Now we can see how the _increasing_ n mod x sequences are changing:  and derivative here really just means successive difference of the discrete sequences.  Example.<P>
+
+Sure enough, we can check with the data (which although I didn't compute up to 17, you can find by adding 5 and 12), and when you rewrite using the conventions we had before (right to left), you see they agree.<P>
+
+25.  So this is our "fundamental theorem of calculus" relating the Tchoukaillon and increasing remainder sequences.  <P>
+
+One immediate corollary is that any fixed segment of columns is periodic.<P>
+
+But it also shows that the Tchoukaillon sequence is related to some more "standard" mathematics.<P>
+
+E.g. in the increasing remainders, there is some place where the sequence stabilizes.  How big is that?  A:  Broline--Loeb.  This also lets you approximate pi by playing Tchoukaillon!<P>
+
+Many students (including at Anthony Tongen's M^3 = Mentoring for minorities in mathematics program and at our REU site with Laura Taalman) have worked on _lots_ of variations including a linear algebra encoding and considering more general game moves where you "chain" sowing steps together (not necessarily using the store).<P>
+
+26.  Now, if you play this game on a cycle instead of an ever-longer path, you get a well-defined sequence of "affine" Tchoukaillon vectors, but a lot of the former structure seems to break down.<P>
+
+The vectors are unique but don't exist for all n, anymore.<P>
+
+Also, we generated these vectors from reverse-playing, and it is no longer clear how to play them in the forward direction.<P>
+
+Ex.  Notice both the 10 and the 1 would put the last seed in the store...  But the 10 turns out to be the correct move, and you wrap around 2 times (skipping the next two values of n in the data).<P>
+
+27.  Let's turn now to a probabilistic game.  In combinatorics, there has been a recent trend to put some kind of distribution (usually uniform) on some family of combinatorial objects and then ask about structural features probabilistically.  The best choice problem fits into that work (although it is older).<P>
+
+The problem is to consider "candidates" sequentially.  After each "interview" you learn how the candidate ranks against all earlier candidates (but not how they will rank against future candidates).  You must decide whether to stop (ending the game) or continue (in which case, earlier candidates cannot be realled later).
+
+You can picture house buying, auction bids, hiring for a job...  Johanes Kepler (the astronomer) is said to have used this method to find a second wife after he lost his first wife to cholera in 1611. <P> 
+
+Math problem:  how to maximize the chance of finding the best candidate?<P>
+
+Several surprises:  <P>
+
+1.  If you always selected the first candidate, that is a strategy, and it works 1/7 of the time.  but asymptotically, it works 1/n -> 0 percent of the time.  Amazing thing:  you can win 37% of the time, no matter how large n is!<P>
+
+2.  It seems like the maxima play a big role, since you would never stop at any candidate who is not the best you've seen so far.  So maybe you should stop earlier if you see a lot of maxima, and later if not?  But no, strategy is agnostic to the _structure_ of the rankings.  It is "positional":  reject some candidates (whether they are maximal or not!) up to some position and then take the next maximum after that position.<P>
+
+3.  Last amazing thing, e (natural base) enters the problem (twice).<P>
+
+28-32.  I would look at this as a game tree.  "Game states" are relative rankings among candidates you've seen.  "Outcomes" are the probabilities of finding the best candidate (among rankings compatible with a given prefix).<P>
+
+We can solve backwards to find these!<P>
+
+Initially, we have the best candidate at the end, but e.g. it is better to trade 2134 (win 1) for 213 (win 3).  Also, notice symmetry 213 = 123.  <P>
+
+Continuing, we trade {123,2314,1324} (total 5/12) for 12 (6/12).  But this is the best we can do for prefixes under 1 (11/24).<P>
+
+So optimal to reject first candidate and accept the next best after.<P>
+
+33.  I'm more interested in non-uniform distributions on the rankings (i.e. on the symmetric group), which haven't been as well-studied.<P>
+
+Pattern avoidance here refers to forbidden relative orderings:  321 means you never see three decreasing entries (consecutive or not).  231 means when you see a candidate better than someone you saw earlier, no one later will be worse than that earlier candidate.  So these are distributions that are uniform, but only on a subset of permutations (both of these happen to be counted by the Catalan numbers, rather than n!).<P>
+
+(I imagine this pattern-avoidance could arise through some kind of domain learning:  It is very easy to tell difference between 12 and 21, but much harder to distinguish the exact prefix ranking for 10 candidates.)<P>
+
+Also, note that it would be _very hard_ to study pattern-avoiding permutations using probability arguments (no obvious symmetry any more), but it's easy to at least solve specific cases using the game tree!  Then you can program it and generate data!  Then, (with students) we cross the FINITE-INFINITE divide, by _finding patterns_ and _proving them by induction_.<P>
+
+For the weighted model, we count structures in the relative ordering and select a permutation with probability distribution that is exponential in that counting statistic.  Here, inversions are like disappointments (so probably theta < 1 to model suppressing them).  Left-to-right maxima mean you see someone better than all earlier candidates (so probably theta > 1 to amplify this).  We'll see opportunity cost model in a minute.<P>
+
+34.  First we prove a fundamental result that most weighted games have an optimal strategy with the same form as the classical problem:  reject r and pick the next best after.  (For comparison, though, the optimal strategy for the 321-avoiding game is _not_ positional, so the result is not trivial either.)<P>
+
+As an example of checking #inversions is "sufficiently local" consider the two cases:  both entries are in the prefix (then rearranging the prefix may create/destroy the inversion); or the right entry is not in the prefix (then no matter how you permute the prefix, you will not change the inversion).<P>
+
+This structural result works just as well for theta = 1, which recovers the uniform distribution.  <P>
+
+35.  Now, it turns out that very few papers in the literature for the classical problem actually address this issue at all!  They start by _assuming_ the optimal strategy is positional, and write down the formula such a strategy would have to satisfy. <P>
+
+I noticed a reference on wikipedia that claimed to have a proof of this result, but it was not in a publication or even a digital resource.  Working with an amazing librarian, I was able to get a copy digitized and sent to me.<P>
+
+36.  This is the main letter from Flood to Gilman, describing the secretary/best-choice problem.  <P>
+
+37.  But note his hesitancy about the form of the optimal strategy!  He says he has no proof, but an "outline" by Palermo is attached.<P>
+
+38.  So I was pretty excited to dig into this addendum...  until I started reading it.  Pretty disappointing:  First line redefines y (set or number?)  Third note neglects to indicate that P and P-bar are NOT complementary; no proof of the "monotone" claim.<P>
+
+If mathematical correctness is generally classified into "gaps" vs. "errors," these are gaps, but they are significant.  So our new proof for the weighted model also gives an explicit proof for the classical case.<P>
+
+39.  Ok, let's use this result to solve a model suggested by an REU student that worked with Laura Taalman and me last summer.  Madeline Crews had the idea to use the position of the candidate as a weight.  This models "discounted utility:"  if you hire someone immediately (for a temporary summer job, say), you get all the benefit of their employment.  But if you hire the best person after one wasted interview, there's less time for them to work, and so maybe you get only 95% of their utility.  If you hire the best person after two wasted interviews, you get 95% of 95%, so it's geometric.  Or maybe the interviews themselves are costly, b/c you fly someone out etc.<P>
+
+Ok, so that statistic is sufficiently local, so we know we should use a positional strategy.  Our REU students defined the generating function for those rankings that will be won by the "reject r, take the next best" strategy, and did some math (enumerative combinatorics).<P>
+
+Upshot:  The asymptotic (N -> infty) probability of success for the "reject r" strategy is P_r(theta), a series formula as shown.<P>
+
+40.  Now when you plot P_0 vs. P_1 vs. P_2 etc. on the theta/probability plane, you notice that intersections occur at maxima (precisely)!<P>
+
+And these intersections control the transitions (in terms of theta) where the optimal strategy changes.  You want to skim along the top of these graphs, selecting the maximum one for whatever region of theta you are in.<P>
+
+Now, it happens that the first intersection occurs with probability 1/e, which is the classical success probability.  But subsequent intersections form a monotonically decreasing subsequence (start at a maximum, slide off, hit a max, slide off), that is bounded below by zero, so it has some limit.  WHAT IS IT?  <P>
+
+It looks like it is bounded away from 1/e, which is strange b/c you would expect that the limiting probability as theta -> 1 would be 1/e (being the probability AT theta = 1 by the classical result).<P>
+
+41.  It turns out that you can find the limit in terms of the exponential integral, a standard special function, or actually in terms of a related function F that we optimize.  Turns out the optimal value is about 28.1%, and this is the limiting success probability as theta -> 1.<P>
+
+So:  slogan would be:  there is a price of about 9% for ANY (even infinitesimal) discounting.<P>
+
+42.  The proof is elementary, uses calculus.  The tricky thing is you need to let theta -> 1 and r -> infty in a compatible way so we use a change of variables c = (1-theta)r.  Then the exponential integral pops out at the end.<P>
+
+So this is just one project we've worked on.  You can find several others on my website.<P>
+
+In the last few minutes, I wanted to say a few words about some of the professional context for this work.<P>
+
+43.  I didn't start out doing this kind of math.  These are a few of my official and unofficial mentors who taught me so much:  Sara Billey, Richard Green, Monica Vazirani, and Anne Schilling, as well as some of their work.  I was involved for about 7 years (through grad school and one postdoc) on problems in "algebraic combinatorics."  <P>
+
+When I came to JMU, I tried to work with students on various aspects of this, but found that either 1.  it was often too hard to get up to speed, required too many background definitions/concepts from advanced courses, or else 2.  it was accessible, but then everyone else in that world was interested in it as well so hard to keep it original/move fast enough.  Maybe some of you have had similar experiences? <P>
+
+44.  More fundamentally, I think there are a lot more differences than we commonly acknowledge between our research _training_ and what we actually end up doing in our research _careers at PUIs_.  I'd like to see/participate in more conversations about this. <P>
+
+45.  My latest thinking, which continues to evolve, is to try and find open research areas (out of the mainstream) that use standard skills/techniques (from mainstream math).  <P>
+
+This work with game trees is just one example of the "pivot" paradigm.  Some advantages I've found are that they give you an _immediate_ computational tool, and often, if you simplify enough, can provide patterns or symmetries that then become seeds for theorems.  <P>
+
+Ok, thanks so much for attending this talk!<P>
+
+
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,132 @@
+\renewcommand{\familydefault}{ptm}
+
+\setlength{\evensidemargin}{0.1in}
+\setlength{\oddsidemargin}{0.1in}
+\setlength{\textwidth}{6.3in}
+\setlength{\topmargin}{0.0in}
+\setlength{\textheight}{8.7in}
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\usepackage{verbatim}
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0, 0, .4}
+\definecolor{grey}{rgb}{.7, .7, .7}
+\usepackage[breaklinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    anchorcolor=darkblue,
+    citecolor=darkblue,
+    pagecolor=darkblue,
+    urlcolor=darkblue,
+    pdftitle={},
+    pdfauthor={}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  From AMS Header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Custom Header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{lemmatta}[theorem]{Lemmatta}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{deflemma}[theorem]{Definition-Lemma}
+
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\F}[0]{\mathbb{F}}
+
+\usepackage[all, dvips, knot]{xy}
+\usepackage[all, knot, dvips, color]{xypic}
+\xyoption{arc}
+
+\usepackage{graphicx}
+
+\newcommand{\lf}{\lfloor}
+\newcommand{\rf}{\rfloor}
+\newcommand{\h}{\mathsf{h}}
+\newcommand{\w}{\mathsf{w}}
+\newcommand{\x}{\mathsf{x}}
+\newcommand{\y}{\mathsf{y}}
+\newcommand{\z}{\mathsf{z}}
+%\renewcommand{\u}{\mathsf{u}} % by default, these provide accents above letters.
+\renewcommand{\v}{\mathsf{v}} % by default, these provide accents above letters.
+\newcommand{\p}{\mathsf{p}}
+\newcommand{\q}{\mathsf{q}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\e}{\varepsilon}
+\renewcommand{\a}{\alpha}
+\renewcommand{\d}{\delta}
+\newcommand{\block}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pblock}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+%\usepackage{multirow}  % extension for tabular environment to use \multirow{num_rows}{width}{contents} command.
+
+\newcommand{\after}{\mathsf{rpred}}
+\newcommand{\before}{\mathsf{lpred}}
+\newcommand{\last}{\mathsf{last}}
+
+\newcommand{\ldim}{\mathsf{ldim}}
+\newcommand{\rdim}{\mathsf{rdim}}
+
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\ra}{\rightarrow}
+
+\renewcommand{\t}{\theta}
+\newcommand{\g}{\gamma}
+
+\newcommand{\D}[1]{\frac{d}{dx}\left[ #1 \right]}
+
+\usepackage{url}
+\usepackage{polynom}
+
+\setlength{\parindent}{0in}
+\pagestyle{empty} % use if page numbers not wanted
+\thispagestyle{empty} % use if page numbers not wanted
+
+\newcommand{\limplies}{\rightarrow}
+\newcommand{\liff}{\leftrightarrow}
+\renewcommand{\lnot}{\sim}
+
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\moral}[1]{\bigskip {\color{Violet}Commentary/moral:  #1}}
+\newcommand{\sol}[1]{\bigskip {\color{ForestGreen} #1}}
+
+\usepackage[sfdefault,light]{FiraSans}
+
+\setlength{\parskip}{.35em}
+
