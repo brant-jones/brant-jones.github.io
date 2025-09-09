@@ -1,0 +1,109 @@
+<HTML>
+<HEAD><TITLE>liberiksson (Brant Jones)</TITLE>
+<meta name="description" content="C++ library for Coxeter group calculations, Brant Jones" />
+<meta name="keywords" content="C++, library, Coxeter, Eriksson, Deodhar, Kazhdan, Lusztig, Mathematics, Combinatorics, Brant Jones" />
+<link href="style.css" rel="STYLESHEET" />
+</HEAD>
+<BODY>
+
+
+<B>liberiksson</B> is a C++ library for performing basic operations on Coxeter elements.  The client program verify.cpp classifies Deodhar elements of finite Coxeter groups by embedded factor containment and checks that all of the mu coefficients of Kazhdan--Lusztig polynomials for these elements are 0 or 1.  The client program deodhar.cpp allows ad hoc calculuations of certain Kazhdan--Lusztig polynomials and basis elements for finite Weyl groups, as well as the combinatorial information related to Deodhar algorithm that underlies these computations.
+
+<P>
+The library source files are: <BR>
+<UL>
+  <LI><A HREF="CoxeterSystem.h">CoxeterSystem.h</A>
+  <LI><A HREF="CoxeterSystem.cpp">CoxeterSystem.cpp</A>
+  <LI><A HREF="CoxeterElement.h">CoxeterElement.h</A>
+  <LI><A HREF="CoxeterElement.cpp">CoxeterElement.cpp</A>
+  <LI><A HREF="Masks.h">Masks.h</A>
+  <LI><A HREF="Masks.cpp">Masks.cpp</A>
+</UL><BR>
+The <A HREF="Makefile">Makefile</A> compiles these into a shared library (liberiksson.so on unix, liberiksson.dll on cygwin). <BR>
+One client file is <A HREF="verify.cpp">verify.cpp</A>.  The other is <A HREF="deodhar.cpp">deodhar.cpp</A>.  <BR>
+See the <A HREF="README.txt">README.txt</A> for more information and sample output. <BR>
+
+<P>
+<B>Usage of deodhar.cpp</B><BR>
+<P>
+1.  First compile the program using "make deodhar".  <BR>
+2.  Running without arguments gives help text.  Input is sent to the program using command-line parameters. <BR>
+<PRE>
+brant@fuzzy$ ./deodhar
+No arguments given.
+Usage:  ./deodhar A3 -w 1021
+Given a reduced expression for a Deodhar element,
+returns the Kazhdan-Lusztig basis element.
+Optional argument:  -x <reduced expression> only prints the polynomial P_{x,w}(q).
+Optional argument:  -mu prints the mu-coefficients.
+Optional argument:  -masks prints all masks.
+</PRE>
+3.  Passing a Coxeter type prints the Coxeter matrix.  The generators are 0, 1, ..., n-1 and the <I>ij</I>th entry of the matrix gives the order of the Coxeter element (<I>ij</I>).  <BR>
+<PRE>
+brant@fuzzy$ ./deodhar A3
+Coxeter type A3 with Coxeter matrix: 
+0 3 2 
+3 0 3 
+2 3 0 
+No w expression given.
+</PRE>
+4.  Passing a reduced expression w prints the Kazhdan--Lusztig basis element {C'}_w. <BR>
+<PRE>
+brant@fuzzy$ ./deodhar A3 -w 1201
+Coxeter type A3 with Coxeter matrix: 
+0 3 2 
+3 0 3 
+2 3 0 
+w is using reduced expression 
+....:  ( 1 2 0 1 ).
+In lex order on reduced expressions: 
+P(( 1 2 0 1 ),( )) = 1 + q
+P(( 1 2 0 1 ),( 0 )) = 1
+P(( 1 2 0 1 ),( 0 1 )) = 1
+P(( 1 2 0 1 ),( 0 1 0 )) = 1
+P(( 1 2 0 1 ),( 1 )) = 1 + q
+P(( 1 2 0 1 ),( 1 0 )) = 1
+P(( 1 2 0 1 ),( 1 2 )) = 1
+P(( 1 2 0 1 ),( 1 2 0 )) = 1
+P(( 1 2 0 1 ),( 1 2 0 1 )) = 1
+P(( 1 2 0 1 ),( 1 2 1 )) = 1
+P(( 1 2 0 1 ),( 2 )) = 1
+P(( 1 2 0 1 ),( 2 0 )) = 1
+P(( 1 2 0 1 ),( 2 0 1 )) = 1
+P(( 1 2 0 1 ),( 2 1 )) = 1
+</PRE>
+5.  This can be filtered to just compute the Kazhdan--Lusztig polynomial P_{w,x}(q) for a particular x < w. <BR>
+<PRE>
+brant@fuzzy$ ./deodhar A3 -w 1201 -x 1
+Coxeter type A3 with Coxeter matrix: 
+0 3 2 
+3 0 3 
+2 3 0 
+w is using reduced expression 
+....:  ( 1 2 0 1 ).
+x is using reduced expression ( 1 ).
+In lex order on reduced expressions: 
+P(( 1 2 0 1 ),( 1 )) = 1 + q
+</PRE>
+6.  If the element w is not Deodhar then the basis won't be printed, although mask statistics can still be viewed. <BR>
+<PRE>
+brant@fuzzy$ ./deodhar A3 -w 121 -masks
+Coxeter type A3 with Coxeter matrix: 
+0 3 2 
+3 0 3 
+2 3 0 
+w is using reduced expression 
+....:  ( 1 2 1 ).
+mask:  ( 0 0 0 ):  1
+mask:  ( 1 0 0d):  q (not Deodhar) 
+mask:  ( 0 1 0 ):  1
+mask:  ( 1 1 0 ):  1 (mu mask) 
+mask:  ( 0 0 1 ):  1
+mask:  ( 1 0 1d):  q (mu mask) 
+mask:  ( 0 1 1 ):  1 (mu mask) 
+mask:  ( 1 1 1 ):  1
+</PRE>
+
+</BODY>
+</HTML>
+
